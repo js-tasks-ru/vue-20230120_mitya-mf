@@ -18,8 +18,10 @@
             v-model="filter" 
           />
         </div>
-        <ul v-for="email in filteredEmails">
-          <li>{{email}}</li>
+        <ul>
+          <li v-for="email in emailsWithStatus"
+            v-bind:class="{ marked: email.status }">
+          {{ email.email }}</li>
         </ul>
       </div>
     </div>

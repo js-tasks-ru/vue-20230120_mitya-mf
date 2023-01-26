@@ -39,12 +39,18 @@ const EmailList = defineComponent({
     }
   },
   computed: {
-    filteredEmails() {
+    emailsWithStatus() {
       const searchFilter = (email) =>
           email.toLowerCase().includes(this.filter.toLowerCase());
-      return this.emails.filter(email => searchFilter(email))
+
+      return emails.map( email => {
+        return {email: email, status: this.filter ? searchFilter(email) : false}
+      })
+
     }
-  }
+  },
+
+  
 })
 
 const emailApp = createApp(EmailList).mount('#app');
