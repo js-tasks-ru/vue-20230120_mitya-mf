@@ -16,7 +16,7 @@ const Calculator = defineComponent({
         result() {
             switch (this.operation) {
                 case 'sum':
-                    return Number(this.operandA) + Number(this.operandB);
+                    return this.operandA + this.operandB;
                     
                 case 'subtract':
                     return this.operandA - this.operandB;
