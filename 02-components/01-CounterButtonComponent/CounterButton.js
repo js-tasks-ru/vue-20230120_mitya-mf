@@ -10,14 +10,14 @@ export default defineComponent({
     },
  
   },
-  emits: ['setIncreasedCount'],
+  emits: ['update:count'],
 
   methods: {
     // increment(value) {
     //   this.$emit('countIncrement', value++)
     // }
     increaseCount(value) {
-      this.$emit('setIncreasedCount', ++value)
+      this.$emit('update:count', ++value)
     }
   },
 
