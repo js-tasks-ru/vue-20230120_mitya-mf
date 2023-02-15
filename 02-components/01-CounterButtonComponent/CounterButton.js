@@ -17,7 +17,7 @@ export default defineComponent({
     //   this.$emit('countIncrement', value++)
     // }
     increaseCount(value) {
-      this.$emit('update:count', ++value)
+      this.$emit('update:count', value + 1)
     }
   },
 
