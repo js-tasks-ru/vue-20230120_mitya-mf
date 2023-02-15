@@ -18,13 +18,11 @@ export default {
     },
     emits: ['removeEl'],
     mounted() {
-        console.log(this, 'Создали')
         setTimeout(this.destroy, 5000)
     },
     methods: {
         destroy() {
             this.$emit('removeEl', '')
-            console.log('Удалили')
         }
     },
     components: { UiIcon }

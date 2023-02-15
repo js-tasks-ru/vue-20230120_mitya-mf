@@ -1,6 +1,6 @@
 <template>
   <div class="toasts">
-    <UiToast v-for="toast in toasts" :toast="toast" @removeEl="remove()" :data-id="toast.id"/>
+    <UiToast v-for="toast in toasts" :toast="toast" @removeEl="remove()" :key="toast.id" />
 
   </div>
 </template>
@@ -38,7 +38,6 @@ export default {
     },
     remove() {
       this.toasts.shift()
-      console.log('Удаляем')
     }
   },
 
