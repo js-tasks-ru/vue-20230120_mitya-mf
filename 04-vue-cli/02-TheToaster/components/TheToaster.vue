@@ -74,9 +74,6 @@ export default {
   margin-top: 20px;
 }
 
-.toast__icon {
-  margin-right: 12px;
-}
 
 .toast.toast_success {
   color: var(--green);

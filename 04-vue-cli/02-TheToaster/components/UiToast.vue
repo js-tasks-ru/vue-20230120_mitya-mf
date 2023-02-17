@@ -33,5 +33,8 @@ export default {
 
 
 <style>
+.toast__icon {
+  margin-right: 12px;
+}
 
 </style>
