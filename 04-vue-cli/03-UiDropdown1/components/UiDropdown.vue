@@ -1,19 +1,22 @@
 <template>
-  <div class="dropdown dropdown_opened">
-    <button type="button" class="dropdown__toggle dropdown__toggle_icon">
-      <UiIcon icon="tv" class="dropdown__icon" />
-      <span>Title</span>
+  <div class="dropdown" :class="{ 'dropdown_opened': isOpened }" @click="isOpened = !isOpened">
+    <button type="button" class="dropdown__toggle" :class="{ 'dropdown__toggle_icon' :isAnyIconExist }">
+      <UiIcon v-if="selectedIcon" :icon="selectedIcon" class="dropdown__icon" />
+      <span>{{ selectedOption }}</span>
     </button>
 
-    <div class="dropdown__menu" role="listbox">
-      <button class="dropdown__item dropdown__item_icon" role="option" type="button">
-        <UiIcon icon="tv" class="dropdown__icon" />
-        Option 1
+    <div v-show="isOpened" class="dropdown__menu" role="listbox">
+      <button 
+        v-for="option in options"
+        :value="option.value"
+        @click="$emit('update:modelValue', $event.target.value)"
+        :class="{ 'dropdown__item_icon': isAnyIconExist }"
+        class="dropdown__item"
+        role="option" type="button">
+        <UiIcon v-if="option.icon" :icon="option.icon" class="dropdown__icon" />
+        {{ option.text }}
       </button>
-      <button class="dropdown__item dropdown__item_icon" role="option" type="button">
-        <UiIcon icon="tv" class="dropdown__icon" />
-        Option 2
-      </button>
+
     </div>
   </div>
 </template>
@@ -23,8 +26,35 @@ import UiIcon from './UiIcon.vue';
 
 export default {
   name: 'UiDropdown',
+  data() {
+    return {
+      isOpened: false,
+      selected: undefined
+    }
+  },
 
+
+  computed: {
+    selectedOption() {
+      this.selected = this.options.find(item => item.value == this.modelValue)
+      return this.modelValue ? this.selected.text : this.title
+    },
+    selectedIcon() {
+      return this.selected ? this.selected.icon : false
+    },
+    isAnyIconExist() {
+      let isIcon = this.options.find(item => item.icon !== '' && item.icon !== undefined)
+      return typeof isIcon == 'object' ? true : false
+    }
+  },
+  props: {
+    options: Array,
+    title: String,
+    modelValue: String
+  },
+  emits: ['update:modelValue'],
   components: { UiIcon },
+
 };
 </script>
 
