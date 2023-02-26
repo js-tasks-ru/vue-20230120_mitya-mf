@@ -60,11 +60,11 @@ export default {
 
 
 
-.toast.toast_success {
+.toast_success {
   color: var(--green);
 }
 
-.toast.toast_error {
+.toast_error {
   color: var(--red);
 }
 
