@@ -16,7 +16,7 @@
         <div class="form__buttons">
           <button type="submit" class="button button_primary button_block">Войти</button>
         </div>
-        <div class="form__append">Нет аккаунта? <RouterLink :to="'/register'" class="link">Зарегистрируйтесь</RouterLink></div>
+        <div class="form__append">Нет аккаунта? <RouterLink to="/register" class="link">Зарегистрируйтесь</RouterLink></div>
       </form>
     </UiContainer>
   </div>
