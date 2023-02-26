@@ -29,14 +29,15 @@ export default {
   data() {
     return {
       isOpened: false,
-      selected: undefined
     }
   },
 
 
   computed: {
+    selected() {
+      return this.options.find(item => item.value == this.modelValue)  
+    },
     selectedOption() {
-      this.selected = this.options.find(item => item.value == this.modelValue)
       return this.modelValue ? this.selected.text : this.title
     },
     selectedIcon() {
