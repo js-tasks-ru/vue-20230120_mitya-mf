@@ -1,6 +1,6 @@
 <template>
   <h1 class="logo">
-    <RouterLink :to="'/'" class="logo__link"
+    <RouterLink to="/" class="logo__link"
       ><img src="@/assets/logo.svg" alt="Meetups" class="logo__image" width="174" height="30"
     /></RouterLink>
   </h1>

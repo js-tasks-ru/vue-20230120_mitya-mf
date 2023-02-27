@@ -1,18 +1,18 @@
 <template>
   <nav class="nav">
-    <RouterLink :to="'/login'" class="nav__link">Вход</RouterLink>
-    <RouterLink :to="'/register'" class="nav__link" >Регистрация</RouterLink>
+    <RouterLink to="/login" class="nav__link">Вход</RouterLink>
+    <RouterLink to="/register" class="nav__link" >Регистрация</RouterLink>
   </nav>
 </template>
 
 <script>
 export default {
   name: 'MeetupsNav',
-  methods: {
-    push(url) {
-      this.$router.push(url)
-    }
-  }
+  // methods: {
+  //   push(url) {
+  //     this.$router.push(url)
+  //   }
+  // }
 };
 </script>
 
