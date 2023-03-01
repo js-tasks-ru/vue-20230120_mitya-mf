@@ -1,9 +1,9 @@
 <template>
   <div class="input-group"
-    :class="{'input-group_icon': hasIcons,
-             'input-group_icon-left': hasLeftIcon,
-             'input-group_icon-right': hasRightIcon}">
-    <div v-if="hasLeftIcon" class="input-group__icon">
+    :class="{'input-group_icon': hasIcons(),
+             'input-group_icon-left': hasLeftIcon(),
+             'input-group_icon-right': hasRightIcon()}">
+    <div v-if="hasLeftIcon()" class="input-group__icon">
       <slot name="left-icon"></slot>
     </div>
 
@@ -16,7 +16,7 @@
       ref="input"
       class="form-control" />
 
-    <div v-if="hasRightIcon" class="input-group__icon">
+    <div v-if="hasRightIcon()" class="input-group__icon">
       <slot name="right-icon"></slot>
     </div>
   </div>
@@ -36,6 +36,13 @@ export default {
     inputType() {
       return this.multiline ? 'textarea' : 'input'
     },
+
+
+  },
+  methods: {
+    focus() {
+      this.$refs.input.focus();
+    },
     hasLeftIcon() {
       return !!this.$slots['left-icon']
     },
@@ -43,15 +50,8 @@ export default {
       return !!this.$slots['right-icon']
     },
     hasIcons() {
-      return this.hasLeftIcon || this.hasRightIcon
+      return this.hasLeftIcon() || this.hasRightIcon()
     },
-
-
-  },
-  methods: {
-    focus() {
-      this.$refs.input.focus();
-    }
   },
 
   emits: ['update:modelValue'],
