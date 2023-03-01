@@ -12,7 +12,7 @@ export const router = createRouter({
       }
     }
     if (to.meta.saveScrollPosition && from.meta.saveScrollPosition) {
-      return savedPosition
+      return false
     }
     return {left:0, top: 0}
 
